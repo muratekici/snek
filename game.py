@@ -54,8 +54,8 @@ class Game(object):
                 snake=self.__snakes[snake_id], direction=direction)
 
     def __handle_snake_update(self, snake: Snake, direction: int):
-        is_crashinng = self.__handle_crash(snake=snake, direction=direction)
-        if not is_crashinng:
+        is_crashing = self.__handle_crash(snake=snake, direction=direction)
+        if not is_crashing:
             snake.move(direction=direction)
             is_eating = self.__handle_eating(snake=snake)
 

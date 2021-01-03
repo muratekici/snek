@@ -15,14 +15,9 @@ class Snake(object):
         self.length = len(placement)
         self.placement = placement
 
-    # Move, 0:left, 1:top, 2:right, 3:bottom
+    # Move, 0:left, 1:up, 2:right, 3:down
     def move(self, direction: int):
-        for i in range(len(self.placement) - 1, 0, -1):
-            new_coord = (self.placement[i-1][0], self.placement[i-1][1])
-            self.placement[i] = new_coord
-
-        self.placement[0] = util.get_head_coord(
-            coord=self.placement[0], direction=direction)
+        self.placement = [util.get_head_coord(coord=self.placement[0], direction=direction)] + self.placement[:-1]
 
     def grow(self):
         x_diff = self.placement[-1][0] - self.placement[-2][0]

@@ -66,17 +66,17 @@ def drawGrid():
     global GAME, BLOCK_SIZE, SCREEN, GRID_HEIGHT, GRID_WIDTH
     grid = GAME.map_repr()
     SCREEN.fill(BLACK)
-    for x in range(GRID_HEIGHT):
-        for y in range(GRID_WIDTH):
-            rect = pygame.Rect(x*BLOCK_SIZE, y*BLOCK_SIZE,
+    for y in range(GRID_HEIGHT):
+        for x in range(GRID_WIDTH):
+            rect = pygame.Rect(y*BLOCK_SIZE, x*BLOCK_SIZE,
                                BLOCK_SIZE, BLOCK_SIZE)
             border = False
             CELL_COLOR = GREY
-            if grid[x][y] == 1:
+            if grid[y][x] == 1:
                 CELL_COLOR = FOOD_COLOR
-            elif grid[x][y] >= 10:
-                CELL_COLOR = SNAKE_COLORS[grid[x][y] % 10]
-                if grid[x][y] // 10 == 1:
+            elif grid[y][x] >= 10:
+                CELL_COLOR = SNAKE_COLORS[grid[y][x] % 10]
+                if grid[y][x] // 10 == 1:
                     r, g, b = CELL_COLOR
                     CELL_COLOR = (255, g, b)
             else:

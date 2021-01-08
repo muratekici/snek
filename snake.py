@@ -6,7 +6,7 @@ class Snake(object):
     name = ''
     length = 0
 
-    # A list of (x, y) coordinates. First is the head.
+    # A list of (y, x) coordinates. First is the head.
     placement = []
 
     def __init__(self, snake_id: int, name: str, placement: list) -> None:

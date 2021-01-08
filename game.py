@@ -9,7 +9,7 @@ class Game(object):
     # snake_id: Snake object
     __snakes = {}
 
-    # List of (x, y) coordinates
+    # List of (y, x) coordinates
     __foods = []
 
     def print_snakes(self):
@@ -25,17 +25,17 @@ class Game(object):
         map_pixels = [[0 for _ in range(MAP_SIZE)] for _ in range(MAP_SIZE)]
 
         for food_coord in self.__foods:
-            map_pixels[food_coord[1]][food_coord[0]] = 1
+            map_pixels[food_coord[0]][food_coord[1]] = 1
 
         snake_num = 0
         for snake_id in self.__snakes:
             snake = self.__snakes[snake_id]
             head_coord = snake.placement[0]
-            map_pixels[head_coord[1]][head_coord[0]] = 10 + snake_num
+            map_pixels[head_coord[0]][head_coord[1]] = 10 + snake_num
 
             for i in range(1, len(snake.placement)):
                 body_coord = snake.placement[i]
-                map_pixels[body_coord[1]][body_coord[0]] = 20 + snake_num
+                map_pixels[body_coord[0]][body_coord[1]] = 20 + snake_num
             snake_num += 1
 
         return map_pixels
@@ -91,9 +91,9 @@ class Game(object):
             snake = self.__snakes[snake_id]
 
             for i in range(1, len(snake.placement)):
-                snake_x = snake.placement[i][0]
-                snake_y = snake.placement[i][1]
-                if snake_x == coordinate[0] and snake_y == coordinate[1]:
+                snake_y = snake.placement[i][0]
+                snake_x = snake.placement[i][1]
+                if snake_y == coordinate[0] and snake_x == coordinate[1]:
                     return snake
 
         return None
@@ -102,9 +102,9 @@ class Game(object):
     def __have_snake_head(self, coordinate: tuple) -> Snake:
         for snake_id in self.__snakes:
             snake = self.__snakes[snake_id]
-            snake_x = snake.placement[0][0]
-            snake_y = snake.placement[0][1]
-            if snake_x == coordinate[0] and snake_y == coordinate[1]:
+            snake_y = snake.placement[0][0]
+            snake_x = snake.placement[0][1]
+            if snake_y == coordinate[0] and snake_x == coordinate[1]:
                 return snake
 
         return None

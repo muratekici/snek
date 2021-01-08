@@ -7,12 +7,13 @@ WHITE = (255, 255, 255)
 GREY = (70, 70, 70)
 BLACK = (0, 0, 0)
 FOOD_COLOR = (200, 0, 0)
-SNAKE_COLORS = [(0, 255, 0), (53, 98, 191), (155, 180, 0), (155, 98, 0), (116, 98, 191), (18, 188, 210), (0, 100, 0)]
+SNAKE_COLORS = [(0, 255, 0), (53, 98, 191), (155, 180, 0),
+                (155, 98, 0), (116, 98, 191), (18, 188, 210), (0, 100, 0)]
 
-LEFT  = 0
-UP    = 1
+LEFT = 0
+UP = 1
 RIGHT = 2
-DOWN  = 3
+DOWN = 3
 
 WINDOW_HEIGHT = 750
 WINDOW_WIDTH = 750
@@ -23,6 +24,7 @@ GAME = Game()
 
 pygame.init()
 SCREEN = pygame.display.set_mode((WINDOW_HEIGHT, WINDOW_WIDTH))
+
 
 def main():
     random.seed(1)
@@ -54,7 +56,7 @@ def main():
                     direction = RIGHT
                 elif (event.key == pygame.K_DOWN or event.key == pygame.K_s) and direction != UP:
                     direction = DOWN
-        
+
         GAME.apply_snake_movements([(1, direction)])
 
         pygame.display.update()
@@ -68,7 +70,9 @@ def drawGrid():
     SCREEN.fill(BLACK)
     for y in range(GRID_HEIGHT):
         for x in range(GRID_WIDTH):
-            rect = pygame.Rect(y*BLOCK_SIZE, x*BLOCK_SIZE,
+            x_pos = x*BLOCK_SIZE
+            y_pos = y*BLOCK_SIZE
+            rect = pygame.Rect(x_pos, y_pos,
                                BLOCK_SIZE, BLOCK_SIZE)
             border = False
             CELL_COLOR = GREY
@@ -82,6 +86,7 @@ def drawGrid():
             else:
                 border = True
             pygame.draw.rect(SCREEN, CELL_COLOR, rect, border)
+
 
 if __name__ == "__main__":
     main()

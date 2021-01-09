@@ -1,5 +1,5 @@
 import socket
-import constants as c
+from common import constants as c
 import json
 import threading
 import select

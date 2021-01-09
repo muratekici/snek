@@ -1,7 +1,7 @@
 import pygame
 import random
-from game import Game
-import constants as c
+from common.game import Game
+from common import constants as c
 
 
 def init_game_engine(game: Game):
@@ -44,7 +44,7 @@ def init_game_engine(game: Game):
 
 
 def __drawGrid(game: Game, screen):
-    grid = game.map_repr()
+    grid = game.map_repr(my_id=c.MY_SNAKE_ID)
     screen.fill(c.BLACK)
 
     for y in range(c.GRID_HEIGHT):

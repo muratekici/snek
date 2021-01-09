@@ -23,7 +23,8 @@ SERVER_IP = ''
 PORT = 12345
 BUFFER_SIZE = 1500
 
-MY_SNAKE_ID = ''
+MY_NAME = ''
+MY_SNAKE_ID = -1
 
 # Client message types
 JOIN_REQUEST = 0

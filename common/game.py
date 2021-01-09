@@ -1,5 +1,5 @@
-from snake import Snake
-import util
+from .snake import Snake
+from . import util
 
 MAP_SIZE = 50
 PLAYER_LIMIT = 3
@@ -21,13 +21,22 @@ class Game(object):
     # 1:  Food
     # 1N: Head of the Nth snake
     # 2N: Body of the Nth snake
-    def map_repr(self) -> list:
+    def map_repr(self, my_id: int = None) -> list:
         map_pixels = [[0 for _ in range(MAP_SIZE)] for _ in range(MAP_SIZE)]
 
         for food_coord in self.__foods:
             map_pixels[food_coord[0]][food_coord[1]] = 1
 
-        snake_num = 0
+        if my_id:
+            snake = self.__snakes[my_id]
+            head_coord = snake.placement[0]
+            map_pixels[head_coord[0]][head_coord[1]] = 10
+
+            for i in range(1, len(snake.placement)):
+                body_coord = snake.placement[i]
+                map_pixels[body_coord[0]][body_coord[1]] = 20
+
+        snake_num = 1
         for snake_id in self.__snakes:
             snake = self.__snakes[snake_id]
             head_coord = snake.placement[0]
@@ -39,6 +48,13 @@ class Game(object):
             snake_num += 1
 
         return map_pixels
+
+    def clear_snakes(self):
+        self.__snakes.clear()
+
+    def remove_snake(self, id: int):
+        if id in self.__snakes:
+            self.__snakes.pop(id)
 
     def spawn_snake(self, snake_id: int, name: str,  placement: list):
         snake = Snake(snake_id=snake_id, name=name, placement=placement)

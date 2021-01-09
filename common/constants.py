@@ -36,3 +36,8 @@ SNAKES = 0
 FOOD_SPAWN = 1
 MOVEMENTS = 2
 SNAKE_LEFT = 3
+
+# Game constants ===========================
+MAP_SIZE = 50
+PLAYER_LIMIT = 3
+SERVER_TICK_SEC = 0.25

@@ -18,7 +18,7 @@ def init_game_engine(game: Game):
 
     while True:
         if iteration % 50 == 0:
-            x, y = random.randint(0, 50) - 1, random.randint(0, 50) - 1
+            x, y = random.randint(0, c.MAP_SIZE) - 1, random.randint(0, c.MAP_SIZE) - 1
             game.spawn_food((x, y))
         iteration += 1
 

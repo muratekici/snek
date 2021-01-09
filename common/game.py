@@ -1,8 +1,7 @@
 from .snake import Snake
 from . import util
-
-MAP_SIZE = 50
-PLAYER_LIMIT = 3
+from . import constants as c
+import random
 
 
 class Game(object):
@@ -22,7 +21,8 @@ class Game(object):
     # 1N: Head of the Nth snake
     # 2N: Body of the Nth snake
     def map_repr(self, my_id: int = None) -> list:
-        map_pixels = [[0 for _ in range(MAP_SIZE)] for _ in range(MAP_SIZE)]
+        map_pixels = [[0 for _ in range(c.MAP_SIZE)]
+                      for _ in range(c.MAP_SIZE)]
 
         for food_coord in self.__foods:
             map_pixels[food_coord[0]][food_coord[1]] = 1
@@ -49,6 +49,12 @@ class Game(object):
 
         return map_pixels
 
+    def snake_count(self) -> int:
+        return len(self.__snakes)
+
+    def food_count(self) -> int:
+        return len(self.__foods)
+
     def clear_snakes(self):
         self.__snakes.clear()
 
@@ -63,7 +69,16 @@ class Game(object):
     def spawn_food(self, coordinate: tuple):
         self.__foods.append(coordinate)
 
+    def get_coord_for_food(self) -> tuple:
+        map_repr = self.map_repr()
+        random.seed(1)
+        while 1:
+            x, y = random.randint(
+                0, c.MAP_SIZE - 1), random.randint(0, c.MAP_SIZE - 1)
+            if map_repr[y][x] == 0:
+                return x, y
     # snake_movements (list): list of (snake_id, direction) tuples
+
     def apply_snake_movements(self, snake_movements: list):
         for snake_id, direction in snake_movements:
             self.__handle_snake_update(
@@ -87,7 +102,7 @@ class Game(object):
         new_head_coord = util.get_head_coord(
             coord=snake.placement[0], direction=direction)
 
-        if new_head_coord[0] >= MAP_SIZE or new_head_coord[1] >= MAP_SIZE or new_head_coord[0] < 0 or new_head_coord[1] < 0:
+        if new_head_coord[0] >= c.MAP_SIZE or new_head_coord[1] >= c.MAP_SIZE or new_head_coord[0] < 0 or new_head_coord[1] < 0:
             self.__snake_2_food(snake)
 
         body_snake = self.__have_snake_body(coordinate=new_head_coord)

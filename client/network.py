@@ -10,11 +10,12 @@ processed_UDP = {}  # id: 1
 
 udp_listener_socket = None
 
-def start_listening():
+def start_client():
     threading.Thread(target=__listen_UDP, daemon=True).start()
+    __send_join_request()
 
 
-def send_join_request():
+def __send_join_request():
     msgPacket = {'my_ip': c.MY_IP, 'type': c.JOIN_REQUEST, "name": c.MY_NAME}
     _send_TCP(msgPacket=msgPacket)
 

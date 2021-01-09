@@ -1,0 +1,61 @@
+// From player (TCP)
+{
+    "type": JOIN_REQUEST,//0
+    "ip": ""
+}
+// From player (TCP)
+{
+    "type": LEAVE_REQUEST,//1
+    "id": ""
+}
+// From player (TCP)
+{
+    "type": MOVE_REQUEST,//2
+    "id": "",
+    "dir": 0
+}
+
+
+// From server (UDP)
+{
+    "msg_ind": 0,
+    "type": SNAKES,//0
+    "snakes": [
+        {
+            "ip": "",
+            "id": 0,
+            "name": "",
+            "placement": [
+                0,
+                1,
+                0,
+                2
+            ],
+        }
+    ],
+    "map_size": 50
+}
+// From server (UDP)
+{
+    "msg_ind": 1,
+    "type": FOOD_SPAWN,//1
+    "x": 0,
+    "y": 1
+}
+// From server (UDP)
+{
+    "msg_ind": 2,
+    "type": MOVEMENTS,//2
+    "movements": [
+        0,
+        1,
+        1,
+        2
+    ] // id-dir
+}
+// From server (UDP)
+{
+    "msg_ind": 3,
+    "type": SNAKE_LEFT,//3
+    "id": 0
+}

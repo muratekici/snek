@@ -27,9 +27,11 @@ MY_SNAKE_ID = ''
 
 # Client message types
 JOIN_REQUEST = 0
-MOVEMENT_REQUEST = 1
+LEAVE_REQUEST = 1
+MOVE_REQUEST = 2
 
 # Server UDP message types
-SNAKE_SPAWN = 0
+SNAKES = 0
 FOOD_SPAWN = 1
 MOVEMENTS = 2
+SNAKE_LEFT = 3

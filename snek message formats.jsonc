@@ -1,7 +1,8 @@
 // From player (TCP)
 {
     "type": JOIN_REQUEST,//0
-    "ip": ""
+    "ip": "",
+    "name": ""
 }
 // From player (TCP)
 {

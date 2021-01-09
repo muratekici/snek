@@ -85,8 +85,8 @@ def __handle_received_UDP(data: bytes):
 
         if msgPacket['id'] in processed_UDP:
             return
-        processed_UDP[msgPacket['ID']] = 1
-
+        processed_UDP[msgPacket['id']] = 1
+        
         if msgPacket['type'] == c.SNAKE_SPAWN:
             if msgPacket['snake_ip'] == c.MY_IP:
                 c.MY_SNAKE_ID = msgPacket['snake_id']

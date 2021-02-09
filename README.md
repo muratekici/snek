@@ -34,11 +34,7 @@ OS: ```macOS Catalina 10.14.6```, ```Ubuntu 18.04```
 Python Version: ```3.9.0```
 
 ## **Network Challenges**
-*   Utilized UDP and TC
-*   Synchronized time steps
-*   Small packets
-*   Packet loss control mechanism
-*   Latency control mechanism
+Network challenges, the presentation and screenshots from the game are in the "files" folder.
 
 
 ## Packets:
